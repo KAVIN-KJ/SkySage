@@ -1,14 +1,11 @@
-import { useState } from 'react'
-
+import TopBar from './TopBar'
 import './App.css'
 
 function App() {
-  const [count, setCount] = useState(0)
-
   return (
     <>
-      <div>
-        
+      <div className='app-container'>
+        <TopBar/>
       </div>
     </>
   )
