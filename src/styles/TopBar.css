@@ -1,0 +1,15 @@
+.container{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    border-bottom: 1px solid;
+}
+.container img{
+    width: 9vw;
+}
+.search{
+    width: 300px;
+    padding: 10px;
+    border-radius: 20px;
+}
