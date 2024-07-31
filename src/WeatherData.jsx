@@ -6,42 +6,33 @@ import { APIProvider,Map } from '@vis.gl/react-google-maps'
 import axios from 'axios';
 import { useEffect, useState } from 'react';
 import response from './test.json'
-function WeatherData(){
+function WeatherData(props){
 
 const [forecast,setForecast] = useState([]);
 
 const apiKey = '49f83439ae31ba4840afc2609a55c758';
-const city = 'Antarctica';
+const city = props.city;
 const units = 'metric';
 const getCurrentWeather = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=${units}`;
 const getForecast = `https://api.openweathermap.org/data/2.5/forecast?q=${city}&appid=${apiKey}&units=${units}`
-
-// const fetchWeather = () => {
-    // axios.get(getCurrentWeather)
-    //     .then(response => {
-    //         console.log(response.data);
-    //     })
-    //     .catch(error => {
-    //         console.error(error)
-    //     });
-// }
-// fetchWeather()
-        // useEffect(()=>{
-        //     axios.get(getForecast)
-        //     .then((response)=>{
-        //         setForecast(response.data.list);
-        //     })
-        //     .catch((error)=>{
-        //         console.log(error);
-        //     })
-        // },[])
         useEffect(()=>{
-            console.log(response)
-            setForecast(response.data.list)
-        },[])
+            if(city!=""||city!=null||city!=undefined){
+            axios.get(getForecast)
+            .then((response)=>{
+                setForecast(response.data.list);
+                console.log("Request Sent");
+            })
+            .catch((error)=>{
+                console.log(error);
+            })
+        }
+        },[city])
+        // useEffect(()=>{
+        //     console.log(response)
+        //     setForecast(response.data.list)
+        // },[])
     return(
         <>
-        {console.log(forecast)}
            <div style={{display:"flex",flexWrap:"wrap",justifyContent:"space-evenly"}}>
                 
                 {

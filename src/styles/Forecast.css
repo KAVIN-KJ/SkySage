@@ -1,0 +1,16 @@
+.hourly-forecast-container{
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    border: 1px solid rgb(0, 102, 255);
+    max-width: 250px;
+    width: fit-content;
+    border-radius: 10px;
+    margin: 10px;
+    padding: 10px;
+}
+.hourly-forecast-container .weather-params{
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+}
