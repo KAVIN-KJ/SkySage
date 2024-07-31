@@ -1,25 +1,16 @@
 
 import TopBar from './TopBar'
-import WeatherData from './WeatherData'
+import React, { useContext } from 'react'
+import Chart from './Chart'
 import './App.css'
-import React from 'react'
-import TopButtons from './components/TopButtons'
-import Inputs from './components/Inputs'
-import TimeAndLocation from './components/TimeAndLocation'
-import TempandDetails from './components/TempandDetails'
-import Forecast from './components/Forecast'
-const App = () => {
-  
-  return (
-    <div className='mx-auto max-w-screen-lg mt-4 py-5 px-32 bg-gradient-to-br shadow-xl from-cyan-600 shadow-gray-400 to-blue-00'>  
-      <TopButtons/>
-      <Inputs/>
-      <TimeAndLocation/>
-      <TempandDetails/>
-      <Forecast/>
-      <Forecast/>
-  </div>
+import { querycontext } from './TopBar'
+export default function App(){
+  const query = useContext(querycontext);
+  return(
+    <>
+    <div className='app-container'>
+      <TopBar/>
+    </div>
+    </>
   )
 }
-
-export default App
