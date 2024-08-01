@@ -1,14 +1,28 @@
 import test from './newstest.json' 
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import './styles/News.css'
+import axios from 'axios';
 import notfound from './assets/image-off-svgrepo-com.svg'
 function News(){
     const [response,setResponse] = useState(test)
 
+    // useEffect(()=>{
+    //     console.log("Sending Request");
+    //     axios.get(`https://newsapi.org/v2/everything?q=weather+India&from=2024-07-01&sortBy=publishedAt&apiKey=35c39d22f0744c99bc27e6ba1748a895`)
+    //     .then((response)=>{
+    //         console.log(response.data.articles);
+    //         console.log(response);
+    //         setResponse(response)
+    //     })
+    //     .catch((error)=>{
+    //         console.error(error);
+    //     })  
+    // },[])
+    
     console.log(response.data.articles);
     return(
         <>
-        <h1 style={{margin:"20px"}} >Feed</h1>
+        <h1 style={{margin:"20px",textAlign:"center",fontSize:"50px"}} >Feed</h1>
         <div className='article-container'>
              {
                  response.data.articles.filter((item,index)=> item.author&&item.content!=="").map((article,key)=>(
@@ -18,8 +32,10 @@ function News(){
                         <div>
                             <div dangerouslySetInnerHTML={{__html: article.content.split("[")[0]+``}} ></div><a target='blank' href={article.url}>read More</a>
                         </div>
-                        <div><b>Published At : </b> {article.publishedAt.split("T")[0]} / {article.publishedAt.split("T")[1].replace("Z","")}</div>
-                        <div><b>Authored by : </b> {article.author}</div>
+                        <div>
+                            <div><b>Published At : </b> {article.publishedAt.split("T")[0]} / {article.publishedAt.split("T")[1].replace("Z","")}</div>
+                            <div style={{textOverflow:"hidden"}}><b>Authored by : </b> {article.author.split(",")[0]}</div>
+                        </div>
                     </div>
                 ))
             }
