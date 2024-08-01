@@ -1,93 +1,103 @@
+import React from 'react';
 import { FaThermometerEmpty } from "react-icons/fa";
 import { BiSolidDropletHalf } from "react-icons/bi";
 import { FiWind } from "react-icons/fi";
 import { GiSunrise, GiSunset } from "react-icons/gi";
-import { MdKeyboardArrowUp,MdKeyboardArrowDown } from "react-icons/md";
-const TempandDetails = () => {
-    const VerDetails= [
+import { MdKeyboardArrowUp, MdKeyboardArrowDown } from "react-icons/md";
+import '../styles/TempandDetails.css'; // Adjust the path based on your folder structure
+
+const TempandDetails = ({
+    weather:{
+    details,
+    icon, 
+    temp, 
+    temp_min, 
+    temp_max, 
+    sunrise, 
+    sunset, 
+    speed, 
+    humidity, 
+    feels_like
+}}) => {
+    const VerDetails = [
         {
-            id:1,
-            Icon:FaThermometerEmpty,
-            title:"Real feel",
-            value:"22°",
+            id: 1,
+            Icon: FaThermometerEmpty,
+            title: "Real feel",
+            value: `${feels_like.toFixed()}°`,
         },
         {
-            id:2,
-            Icon:BiSolidDropletHalf,
-            title:"Humidity",
-            value:"34%",
+            id: 2,
+            Icon: BiSolidDropletHalf,
+            title: "Humidity",
+            value: `${humidity.toFixed()}%`,
         },
         {
-            id:3,
-            Icon:FiWind,
-            title:"Wind",
-            value:"10 Km/Hr",
-        },
-    ];
-    const HoriDetailts= [
-        {
-            id:1,
-            Icon:GiSunrise,
-            title:"SunRise",
-            value:"06:30 AM",
-        },
-        {
-            id:2,
-            Icon:GiSunset,
-            title:"Sunset",
-            value:"06:30 PM",
-        },
-        {
-            id:3,
-            Icon:MdKeyboardArrowUp,
-            title:"High",
-            value:"32°",
-        },
-        {
-            id:4,
-            Icon:MdKeyboardArrowDown,
-            title:"Low",
-            value:"22°",
+            id: 3,
+            Icon: FiWind,
+            title: "Wind",
+            value: `${speed.toFixed()} Km/Hr`,
         },
     ];
-  return (
-    <div>
-    <div className="flex items-center justify-center py-6 text-xl text-cyan-700">
-        <p>Rain</p>
-    </div>
-        <div className="flex flex-row items-center justify-between py-3">
-            <img src="https://openweathermap.org/img/wn/01d@2x.png" alt="weather icon"
-            className="w-20"/>
-            <p className="text-5xl">34°</p>
-            <div className="flex flex-col space-y-3 items-start">
-                {
-                    VerDetails.map(({id, Icon, title, value}) => (
-                        <div key={id} className="flex font-light text-sm items-center justify-center">
-                    <Icon size={18} className="mr-1"/>
-                    {`${title}: `} <span className="font-medium ml-1">{value}</span>
+    const HoriDetails = [
+        {
+            id: 1,
+            Icon: GiSunrise,
+            title: "SunRise",
+            value: sunrise,
+        },
+        {
+            id: 2,
+            Icon: GiSunset,
+            title: "Sunset",
+            value: sunset,
+        },
+        {
+            id: 3,
+            Icon: MdKeyboardArrowUp,
+            title: "High",
+            value: `${temp_max.toFixed()}°`,
+        },
+        {
+            id: 4,
+            Icon: MdKeyboardArrowDown,
+            title: "Low",
+            value: `${temp_min.toFixed()}°`,
+        },
+    ];
+    return (
+        <div>
+            <div className="header">
+                <p>{details}</p>
+            </div>
+            <div className="weather-info">
+                <img 
+                    src={icon}
+                    alt="weather icon"
+                    className="weather-icon"
+                />
+                <p className="temperature">{`${temp.toFixed()}°`}</p>
+                <div className="vertical-details">
+                    {VerDetails.map(({ id, Icon, title, value }) => (
+                        <div key={id} className="detail-item">
+                            <Icon size={18} className="icon"/>
+                            {`${title}: `} <span className="value">{value}</span>
+                        </div>
+                    ))}
                 </div>
-                    ))
-                }
+            </div>
+            <div className="horizontal-details">
+                {HoriDetails.map(({ id, Icon, title, value }) => (
+                    <div key={id} className="horizontal-detail-item">
+                        <Icon size={40} className="icon"/>
+                        <p className="detail-text">
+                            {`${title}: `} <span className="value">{value}</span>
+                        </p>
+                    </div>
+                ))}
             </div>
         </div>
-        <div className="flex flex-row items-center justify-center space-x-10 text-sm py-3">
-                {
-                    HoriDetailts.map(({id, Icon, title, value}) => (
-                        <div key={id} className="flex flex-row items-center">
-                            <Icon size={40}/>
-                            <p className="font-light ml-1">
-                            {`${title}: `} <span className="font-medium ml-1">{value}</span>
-                            </p>
-
-                        </div>
-
-                    ))
-                }
-                
-
-            </div>
-    </div>
-  )
+    )
 }
 
-export default TempandDetails
+export default TempandDetails;

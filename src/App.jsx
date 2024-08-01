@@ -1,20 +1,18 @@
-
+import React from 'react'
 import TopBar from './TopBar'
-import React, { useContext } from 'react'
-import Chart from './Chart'
 import './App.css'
-import { querycontext } from './TopBar'
-import LoadingComponent from './LoadingComponent'
+
+import WeatherOverview from './WeatherOverview'
+import Chart from './Chart'
 import News from './News'
-export default function App(){
-  const query = useContext(querycontext);
-  return(
-    <>
-    <div className='app-container'>
-      <TopBar/>
+const App = () => {
+  
+  return (
+    <div>
+      <WeatherOverview/>
       <News/>
-      {/* <LoadingComponent/> */}
     </div>
-    </>
+
   )
 }
+export default App

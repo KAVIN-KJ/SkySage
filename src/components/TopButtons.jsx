@@ -1,42 +1,42 @@
-import React from 'react'
+import React from 'react';
+import '../styles/TopButtons.css'; // Adjust the path based on your folder structure
 
-const TopButtons = () => {
+const TopButtons = ({setQuery}) => {
     const cities = [
         {
-            id:1,
-            name:'London'
+            id: 1,
+            name: 'London'
         },
         {
-            id:2,
-            name:'Tokyo'
+            id: 2,
+            name: 'Tokyo'
         },
         {
-            id:3,
-            name:'Vegas'
+            id: 3,
+            name: 'Vegas'
         },
         {
-            id:4,
-            name:'NEw York'
+            id: 4,
+            name: 'New York'
         },
         {
-            id:5,
-            name:'Osaka'
+            id: 5,
+            name: 'Osaka'
         },
-    ]
-  return (
-    
-    <div className="flex items-center justify-around my-6">
-        {
-            cities.map((city) => (
-                <button key={city.id} 
-                className="text-lg font-medium hover:bg-gray-700/20 px-3 py-2 rounded-md transition ease-inin">{city.name}</button>
-
-            ))
-        }
-      
-
-    </div>
-  )
+    ];
+    return (
+        <div className="top-buttons-container">
+            {cities.map((city) => (
+                <button 
+                    key={city.id} 
+                    className="city-button"
+                    onClick={() => setQuery({ q: city.name })}
+                >
+                    {city.name}
+                </button>
+            ))}
+        </div>
+    );
 }
 
-export default TopButtons
+export default TopButtons;
