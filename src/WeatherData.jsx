@@ -1,7 +1,6 @@
 // ********* WORK IN PROGRESS **********
 
 
-import './styles/Map.css'
 import { APIProvider,Map } from '@vis.gl/react-google-maps'
 import axios from 'axios';
 import { useEffect, useState } from 'react';
