@@ -2,7 +2,7 @@ import React from 'react';
 import '../styles/Forecast.css'; // Make sure to create this file
 
 const Forecast = ({title, data}) => {
-  return (
+  return (     
     <div className="forecast-container">
       <div className="forecast-header">
         <p className="forecast-title">{title}</p>
