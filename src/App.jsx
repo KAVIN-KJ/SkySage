@@ -1,13 +1,14 @@
-import React from 'react'
+import Forecast from './components/Forecast';
+import Inputs from './components/Inputs';
+import TempandDetails from './components/TempandDetails';
+import TimeAndLocation from './components/TimeAndLocation';
 import TopButtons from './components/TopButtons'
-import Inputs from './components/Inputs'
-import TimeAndLocation from './components/TimeAndLocation'
-import TempandDetails from './components/TempandDetails'
-import Forecast from './components/Forecast'
+import getFormattedWeatherData from './services/weatherservice';
+import WeatherOverview from './WeatherOverview';
 const App = () => {
   
   const getWeather = async() => {
-    const data = await getWeatherData('weather',{q: 'berlin'})
+    const data = await getFormattedWeatherData({ q: 'berlin', units: 'metric' })
     console.log(data);
   };
 
@@ -16,13 +17,14 @@ const App = () => {
 
 
   return (
-    <div className='mx-auto max-w-screen-lg mt-4 py-5 px-32 bg-gradient-to-br shadow-xl from-cyan-600 shadow-gray-400 to-blue-00'>  
-      <TopButtons/>
+    <div >  
+      {/* <TopButtons/>
       <Inputs/>
       <TimeAndLocation/>
       <TempandDetails/>
       <Forecast/>
-      <Forecast/>
+      <Forecast/> */}
+      <WeatherOverview/>
   </div>
 
   )

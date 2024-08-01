@@ -1,20 +1,38 @@
-import { BiSearch, BiCurrentLocation } from "react-icons/bi"
+import React, { useState } from 'react';
+import { BiSearch, BiCurrentLocation } from "react-icons/bi";
+import '../styles/Inputs.css'; // Adjust the path based on your folder structure
 
-const Inputs = () => {
+const Inputs = ({setQuery, setUnits}) => {
+  const[city,setCity] = useState("");
+  const handleSearchClick = () => {
+    if (city !== '') setQuery({q : city})
+  }
+
+
   return (
-    <div className="flex flex-row justify-center my-6">
-      <div className="flex flex-row w-3/4 items-center justify-center space-x-4">
-        <input type="text" placeholder="search city..." className="text-gray-700 text-xl font-light p-2 w-full shadow-xl capitalize focus:outline-none placeholder:lowercase"/>
-        <BiSearch size={30} className="cursor-pointer transit ease-out hover:scale-125"/>
-        <BiCurrentLocation size={30} className="cursor-pointer transit ease-out hover:scale-125"/>
+    <div className="inputs-container">
+      <div className="inputs-wrapper">
+        <input 
+          value={city}
+          onChange={(e) => setCity(e.currentTarget.value)}
+          type="text" 
+          placeholder="search city..." 
+          className="inputs-search"
+        />
+        <BiSearch size={30} className="icon"
+        onClick={handleSearchClick}
+        />
+        <BiCurrentLocation size={30} className="icon"/>
       </div>
-      <div className="flex flex-row w-1/4 items-center justify-center">
-      <button className="text-2xl font-medium transition ease-out hover:scale-125">°C</button>
-      <p className="text-2xl font-medium mx-1">|</p>
-      <button className="text-2xl font-medium transition ease-out hover:scale-125">°F</button>
+      <div className="units-wrapper">
+        <button className="unit-button"
+        onClick={()=> setUnits("metric")}>°C</button>
+        <p className="separator">|</p>
+        <button className="unit-button"
+        onClick={()=> setUnits("imperial")}>°F</button>
       </div>
     </div>
   )
 }
 
-export default Inputs
+export default Inputs;
