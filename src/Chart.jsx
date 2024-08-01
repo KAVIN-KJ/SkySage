@@ -10,6 +10,7 @@ import { Chart as ChartJS,
     Tooltip,
     Legend
 } from 'chart.js';
+
 import { useEffect, useState } from 'react';
 
 ChartJS.register(
@@ -23,27 +24,15 @@ ChartJS.register(
 );
 
 export default function Chart(props) {
-    const city=props.city
-    const apiKey = '49f83439ae31ba4840afc2609a55c758';
-    const units = 'metric';
-    const getForecast = `https://api.openweathermap.org/data/2.5/forecast?q=${city}&appid=${apiKey}&units=${units}`
-
-    const [dataList,setDatalist] = useState(response.data.list)
+   
+    const [dataList,setDatalist] = useState(props.response.data.list)
     const temps = dataList.map(entry => entry.main.temp); 
     const labels = dataList.map(entry => entry.dt_txt.split(" ")[1]); 
     const humidity = dataList.map(entry=> entry.main.humidity)
+
     useEffect(()=>{
-        if(city){
-        axios.get(getForecast)
-        .then((response)=>{
-            setDatalist(response.data.list);
-            console.log("Request Sent");
-        })
-        .catch((error)=>{
-            console.log(error);
-        })
-    }
-    },[city])
+        setDatalist(props.response.data.list);
+    },[props.response])
 
     const options = {
 
