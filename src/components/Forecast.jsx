@@ -18,7 +18,7 @@ const Forecast = () => {
                 </div>
             ))}
         </div>
-      
+        
     </div>
   )
 }
