@@ -13,13 +13,13 @@ function News(){
              {
                  response.data.articles.filter((item,index)=> item.author&&item.content!=="").map((article,key)=>(
                      <div className='newsArticle' key={key} >
-                        <marquee behavior="slide" direction="left">
                             <h3>{article.title}</h3>
-                        </marquee>
                         <img src={article.urlToImage ? article.urlToImage : notfound} width="200px" alt="Could not Load Image" />
-                        <div style={{display:"inline"}}>
+                        <div>
                             <div dangerouslySetInnerHTML={{__html: article.content.split("[")[0]+``}} ></div><a target='blank' href={article.url}>read More</a>
                         </div>
+                        <div><b>Published At : </b> {article.publishedAt.split("T")[0]} / {article.publishedAt.split("T")[1].replace("Z","")}</div>
+                        <div><b>Authored by : </b> {article.author}</div>
                     </div>
                 ))
             }
