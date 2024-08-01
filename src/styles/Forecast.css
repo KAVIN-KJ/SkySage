@@ -38,6 +38,21 @@
   font-size: 14px;
 }
 
+.forecast-icon{
+  display: inline-block;
+  animation: Hover 1s infinite alternate;
+}
+
+@keyframes Hover {
+    from{
+      transform: translateY(5px);
+    }
+    to{
+      transform: translateY(-5px);
+    }
+}
+
+
 .forecast-icon {
   width: 48px;
   margin: 4px 0;
