@@ -27,15 +27,19 @@ export default function Chart(props) {
    
     const [dataList,setDatalist] = useState(props.response.data.list)
     const temps = dataList.map(entry => entry.main.temp); 
-    const labels = dataList.map(entry => entry.dt_txt.split(" ")[1]); 
+    const labels = dataList.map(entry => entry.dt_txt.split(" ")[0]+"/"+entry.dt_txt.split(" ")[1]); 
     const humidity = dataList.map(entry=> entry.main.humidity)
-
+    const pressure = dataList.map(entry=> entry.main.pressure)
     useEffect(()=>{
         setDatalist(props.response.data.list);
     },[props.response])
 
     const options = {
-
+        plugins:{
+            title:{
+                display: true,
+            }
+        }
     };
 
     const tempdata = {
@@ -58,11 +62,22 @@ export default function Chart(props) {
             }
         ]
     }
+    const pressureData = {
+        labels: labels,
+        datasets: [
+            {
+                label:"Pressure",
+                data:pressure,
+                borderColor:"green"
+            }
+        ]
+    }
 
     return (
-        <div style={{ width: "40%",overflow:"auto",display:"flex",flexDirection:"column",gap:"30px"}}>
+        <div style={{ width: "60%",overflow:"auto",display:"flex",flexDirection:"column",justifyContent:"space-evenly"}}>
             <Line options={options} data={tempdata} />
             <Line options={options} data={humdata}/>
+            <Line options={options} data={pressureData}/>
         </div>
     );
 }

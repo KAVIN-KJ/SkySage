@@ -16,10 +16,10 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  margin: 12px 0; /* my-3 */
+  margin: 12px 0;
 }
 
 .location-text {
-  font-size: 1.875rem; /* text-3xl */
+  font-size: 2em; /* text-3xl */
   font-weight: 500; /* font-medium */
 }

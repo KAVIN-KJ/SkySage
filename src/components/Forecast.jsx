@@ -2,6 +2,8 @@ import React from 'react';
 import '../styles/Forecast.css'; // Make sure to create this file
 
 const Forecast = ({title, data}) => {
+
+  const randomDelay = Math.random() * 10; 
   return (     
     <div className="forecast-container">
       <div className="forecast-header">
@@ -16,6 +18,7 @@ const Forecast = ({title, data}) => {
               src={d.icon}
               alt="weather icon" 
               className="forecast-icon"
+              style={{animationDelay:`${randomDelay}s`}}
             />
             <p className="forecast-temp">{`${d.temp.toFixed()}°`}</p>
           </div>

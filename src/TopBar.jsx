@@ -2,14 +2,16 @@ import './styles/TopBar.css'
 import search_light from './assets/search-icon-light.svg'
 import logo from './assets/SkySage_logo_light.png'
 import settings from './assets/settings.svg'
-import WeatherData from './WeatherData'
 import test from './test.json'
 import axios from 'axios'
-import { createContext, useState, useEffect } from 'react'
+import WeatherOverview from './WeatherOverview'
+import { useState, useEffect } from 'react'
+import { BiCurrentLocation } from 'react-icons/bi'
 import Chart from './Chart'
+import News from './News'
 import LoadingComponent from './LoadingComponent'
+import Inputs from './components/Inputs'
 
-export const querycontext = createContext()
 function TopBar(){
 
     
@@ -40,25 +42,27 @@ function TopBar(){
 
 
     return(
-        <querycontext.Provider value={query}>
+        <>
                 <div className='container'>
                     <img src={logo} alt="" />
                     <div className='search-container'>
                         <input 
                         onChange={(e)=>{setText(e.target.value)}}
-                        type="text" className='search' id='search' />  
+                        type="text" className='search' id='search' 
+                        placeholder='Search For any Major City'/>  
                         <img onClick={()=>{ setQuery(text);setText(); document.getElementById('search').value="" }} src={search_light} alt="" />
                     </div>
                     <div className='options'>
                         <img alt="" style={{width:"70px"}} src={settings} />
                     </div>
                 </div>
-                {loading ? (
-               <LoadingComponent/>
-            ) : 
-                <Chart response={response} city={query} />
-        }
-        </querycontext.Provider>
+                    <div className="content-container">
+                    {loading ? (<LoadingComponent/>) : (<Chart response={response} city={query} />)}
+                    
+                    <WeatherOverview city={query} />
+                    </div>
+                    <News/>
+        </>
     )
 }
 export default TopBar

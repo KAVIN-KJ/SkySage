@@ -6,18 +6,19 @@ import notfound from './assets/image-off-svgrepo-com.svg'
 function News(){
     const [response,setResponse] = useState(test)
 
-    // useEffect(()=>{
-    //     console.log("Sending Request");
-    //     axios.get(`https://newsapi.org/v2/everything?q=weather+India&from=2024-07-01&sortBy=publishedAt&apiKey=35c39d22f0744c99bc27e6ba1748a895`)
-    //     .then((response)=>{
-    //         console.log(response.data.articles);
-    //         console.log(response);
-    //         setResponse(response)
-    //     })
-    //     .catch((error)=>{
-    //         console.error(error);
-    //     })  
-    // },[])
+    useEffect(()=>{
+        console.log("Sending Request");
+        axios.get(`https://newsapi.org/v2/everything?q=weather-India&sortBy=publishedAt&apiKey=35c39d22f0744c99bc27e6ba1748a895`)
+        .then((response)=>{
+            console.log(response.data.articles);
+            console.log(response);
+            setResponse(response)
+        })
+        
+        .catch((error)=>{
+            console.error(error);
+        })  
+    },[])
     
     console.log(response.data.articles);
     return(
