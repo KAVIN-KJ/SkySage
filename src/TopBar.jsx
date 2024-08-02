@@ -14,30 +14,29 @@ import Inputs from './components/Inputs'
 
 function TopBar(){
 
-    
     const [text,setText] = useState("Coimbatore")
-    const [query,setQuery] = useState("")
+    const [city,setCity] = useState("")
     const [response,setResponse] = useState(test)
     const [loading,setLoading] = useState(false)
 
     const apiKey = '49f83439ae31ba4840afc2609a55c758';
     const units = 'metric';
-    const getForecast = `https://api.openweathermap.org/data/2.5/forecast?q=${query}&appid=${apiKey}&units=${units}`
+    const getForecast = `https://api.openweathermap.org/data/2.5/forecast?q=${city}&appid=${apiKey}&units=${units}`
 
-    useEffect(()=>{
-        if(query){
-            setLoading(true);
-            console.log("Request Sent");
-        axios.get(getForecast)
-        .then((recieve)=>{
-            setResponse(recieve);
-            setLoading(false);
-        })
-        .catch((error)=>{
-            console.log(error);
-        })
-    }
-    },[query])
+    // useEffect(()=>{
+    //     if(city){
+    //         setLoading(true);
+    //         console.log("Request Sent");
+    //     axios.get(getForecast)
+    //     .then((recieve)=>{
+    //         setResponse(recieve);
+    //         setLoading(false);
+    //     })
+    //     .catch((error)=>{
+    //         console.log(error);
+    //     })
+    // }
+    // },[city])
 
 
 
@@ -45,21 +44,12 @@ function TopBar(){
         <>
                 <div className='container'>
                     <img src={logo} alt="" />
-                    <div className='search-container'>
-                        <input 
-                        onChange={(e)=>{setText(e.target.value)}}
-                        type="text" className='search' id='search' 
-                        placeholder='Search For any Major City'/>  
-                        <img onClick={()=>{ setQuery(text);setText(); document.getElementById('search').value="" }} src={search_light} alt="" />
-                    </div>
                     <div className='options'>
                         <img alt="" style={{width:"70px"}} src={settings} />
                     </div>
                 </div>
-                    <div className="content-container">
-                    {loading ? (<LoadingComponent/>) : (<Chart response={response} city={query} />)}
-                    
-                    <WeatherOverview city={query} />
+                    <div className="content-container">                    
+                    <WeatherOverview city={city} />
                     </div>
                     <News/>
         </>
