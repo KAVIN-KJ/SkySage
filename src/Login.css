@@ -1,7 +1,7 @@
 body {
   font-family: 'Arial', sans-serif;
   margin: 0;
-  color:white;
+  color: white;
   height: 100vh; /* Full viewport height */
   overflow: hidden; /* Prevent scrolling */
 }
@@ -10,45 +10,27 @@ body {
   display: flex;
   width: 100%;
   height: 100vh; /* Full viewport height */
-  position: relative; /* Position relative for absolute positioning of the form */
-}
-
-.gif-container {
-  flex: 1; /* Take up half the space */
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.gif-container img {
-  width: 100vw; /* Full width of the viewport */
-  height: 100vh; /* Full height of the viewport */
-  object-fit: cover; /* Cover the entire area */
-  position: absolute; /* Position absolute for full coverage */
-  top: 0;
-  left: 0;
-  z-index: -1; /* Send the GIF behind the form */
+  justify-content: center; /* Center the form */
+  align-items: center; /* Center the form */
 }
 
 .form-container {
-  flex: 1; /* Take up the other half */
   display: flex;
   justify-content: center;
   align-items: center;
   position: relative; /* Position relative for better control */
-  z-index: 1; /* Ensure the form is above the GIF */
 }
 
 .form-box {
-   /* Semi-transparent background for readability */
-   background-color: rgba(255, 255, 255, 0.333); /* Remove the background */
   padding: 50px;
   border-radius: 25px;
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
   width: 300px;
-  height:fit-content;
-  opacity:70%;
+  height: fit-content;
+  opacity: 100%; /* Fully opaque */
+  background: none; /* No background */
 }
+
 .form-value {
   text-align: center;
 }
@@ -57,7 +39,7 @@ body {
   margin-bottom: 20px;
   margin-top: 0px;
   font-size: 36px;
-  color: white;
+  color: #007BFF;
 }
 
 .inputbox {
@@ -72,7 +54,7 @@ body {
   border-bottom: 2px solid #333;
   background: transparent;
   font-size: 16px;
-  color:white;
+  color: black;
   margin-top: 20px;
 }
 
@@ -81,7 +63,7 @@ body {
   top: -10px;
   left: 10px;
   padding: 0 5px;
-  color:white;
+  color:  #007BFF;
   transition: 0.3s;
   font-size: 18px; /* Increase font size */
   font-weight: normal;
@@ -128,7 +110,7 @@ button:disabled {
 
 .register p {
   font-size: 14px;
-  color:white;
+  color: black;
 }
 
 .register a {
@@ -140,8 +122,8 @@ button:disabled {
 .register a:hover {
   color: #005bb5;
 }
+
 .logo-container {
-  
   padding: 5px; /* You can keep or remove padding */
   border-radius: 5px; /* Rounded corners (optional) */
   margin: 0 auto 15px auto; /* Center the container and space below */
@@ -151,11 +133,13 @@ button:disabled {
   width: fit-content; /* Adjust to the content size */
 }
 
-
-
 .logo {
   width: 300px; /* Adjust the width as needed */
   height: auto; /* Maintain aspect ratio */
 }
 
+/* Add this to your existing Login.css */
 
+.remember-me {
+  color: black; /* Set the text color to black */
+}

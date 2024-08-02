@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-import lightningGif from './assets/lighting.webp'; // Corrected asset path
-import logo from './assets/SkySage_logo_light.png'; // Import your logo
+
+import logo from './assests/SkySage_logo_light.png'; // Import your logo
 import './Login.css';
 
 const Forget = () => {
@@ -26,7 +26,7 @@ const Forget = () => {
   return (
     <section className="login-section">
       <div className="gif-container">
-        <img src={lightningGif} alt="Weather GIF" />
+       
       </div>
       <div className="form-container">
         <form onSubmit={handleSubmit} className="form-box">
