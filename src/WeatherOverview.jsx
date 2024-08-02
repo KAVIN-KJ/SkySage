@@ -7,13 +7,15 @@ import TopButtons from './components/TopButtons';
 import { getWeatherData } from './services/weatherservice';
 import getFormattedWeatherData from './services/weatherservice';
 import './styles/WeatherOverview.css'; 
+import test from './test.json'
+import Chart from './Chart';
 
 const WeatherOverview = () => {
 
     const[query, setQuery] = useState({q:'madurai'})
     const[units, setUnits] = useState('metric')
     const[weather, setWeather] = useState(null)
-
+    const[response,setResponse] = useState(test)
 
 
     const getWeather = async() => {
@@ -27,9 +29,11 @@ const WeatherOverview = () => {
     }, [query, units]);
     
     return (
+        <div style={{padding:"20px", width:"100%",display:"flex",justifyContent:"space-evenly"}}>
+
         <div className='weather-overview-container'>
-            <TopButtons setQuery={setQuery}/>
-            <Inputs setQuery={setQuery} setUnits={setUnits}/>
+            <TopButtons setResponse={setResponse} setQuery={setQuery}/>
+            <Inputs setResponse={setResponse} setQuery={setQuery} setUnits={setUnits}/>
             {weather && (
                 <>
                 <TimeAndLocation weather={weather} />
@@ -38,6 +42,8 @@ const WeatherOverview = () => {
                 <Forecast title='Daily forecast ' data={weather.daily} />
                 </>
             )}
+        </div>
+            <Chart response={response}/>
         </div>
     );
 }
