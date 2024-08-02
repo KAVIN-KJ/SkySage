@@ -1,17 +1,36 @@
-import React from 'react'
-import TopBar from './TopBar'
-import './App.css'
-
-import WeatherOverview from './WeatherOverview'
-import Chart from './Chart'
-import News from './News'
+import React, { useState } from 'react';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import Login from './Login';
+import Signup from './Signup';
+import Forget from './Forget';
 const App = () => {
-  
-  return (
-    <div>
-      <TopBar/>
-    </div>
+  const [users, setUsers] = useState([]);
 
-  )
-}
-export default App
+  const handleSignIn = (email, password) => {
+    const existingUser = users.find((user) => user.email === email);
+    if (existingUser) {
+      alert('User already exists. Please log in.');
+      return;
+    }
+
+    const newUser = { email, password };
+    setUsers([...users, newUser]);
+  };
+
+  const handleLogin = (email, password) => {
+    const user = users.find((user) => user.email === email && user.password === password);
+    return user ? true : false;
+  };
+
+  return (
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<Login handleLogin={handleLogin} />} />
+        <Route path="/Signup" element={<Signup handleSignIn={handleSignIn} />} />
+        <Route path="/Forget" element={<Forget />} />
+      </Routes>
+    </BrowserRouter>
+  );
+};
+
+export default App;
