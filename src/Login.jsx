@@ -1,33 +1,45 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import lightningGif from './assests/lighting.webp'; // Corrected asset path
-import logo from './assests/SkySage_logo_light.png'; // Replace with your logo path
+import lightningGif from './assets/lighting.webp'; 
+import logo from './assets/SkySage_logo_light.png'; // Adjust the path to your logo file
 import './Login.css';
-
-const Signup = ({ handleSignIn }) => {
+import './Signup';
+const Login = ({ handleLogin }) => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const [confirmPassword, setConfirmPassword] = useState('');
   const [errors, setErrors] = useState({});
+
+  useEffect(() => {
+    const storedEmail = localStorage.getItem('userEmail') || '';
+    const storedPassword = localStorage.getItem('userPassword') || '';
+    setEmail(storedEmail);
+    setPassword(storedPassword);
+  }, []);
+
+  useEffect(() => {
+    localStorage.setItem('userEmail', email);
+  }, [email]);
+
+  useEffect(() => {
+    localStorage.setItem('userPassword', password);
+  }, [password]);
 
   const handleSubmit = (e) => {
     e.preventDefault();
     const errors = {};
-
+    
     if (!email.trim() || !/\S+@\S+\.\S+/.test(email)) {
       errors.email = 'Email is invalid';
     }
+    
     if (!password.trim() || password.trim().length < 6) {
       errors.password = 'Password must be at least 6 characters long';
     }
-    if (password !== confirmPassword) {
-      errors.confirmPassword = 'Passwords do not match';
-    }
 
     if (Object.keys(errors).length === 0) {
-      handleSignIn(email, password);
-      alert(`Signup Successful!\nEmail: ${email}`);
-      window.location.href = '/';
+     
+      alert(`Login Successful!\nEmail: ${email}\nPassword: ${password}`);
+      window.location.href = '/Info';
     } else {
       setErrors(errors);
     }
@@ -40,11 +52,11 @@ const Signup = ({ handleSignIn }) => {
       </div>
       <div className="form-container">
         <form onSubmit={handleSubmit} className="form-box">
-          <div className="logo-container">
-            <img src={logo} alt="Logo" className="logo" />
-          </div>
           <div className="form-value">
-            <h2>Signup</h2>
+            <div className="logo-container">
+              <img src={logo} alt="Logo" className="logo" />
+            </div>
+            <h2>Login</h2>
             <div className="inputbox">
               <input
                 type="email"
@@ -65,24 +77,19 @@ const Signup = ({ handleSignIn }) => {
               <label>Password</label>
               {errors.password && <p className="error-message">{errors.password}</p>}
             </div>
-            <div className="inputbox">
-              <input
-                type="password"
-                value={confirmPassword}
-                onChange={(e) => setConfirmPassword(e.target.value)}
-                required
-              />
-              <label>Confirm Password</label>
-              {errors.confirmPassword && <p className="error-message">{errors.confirmPassword}</p>}
+            <div>
+              <label>
+                <input type="checkbox" /> Remember Me <Link to="/Forget">Forgot</Link>
+              </label>
             </div>
             <br />
             <div>
-              <button style={{ padding: '10px', borderRadius: '10px', marginLeft: '10px' }} type="submit">Sign up</button>
+              <button style={{ padding: '10px', borderRadius: '10px', marginLeft: '10px' }} type="submit">Log in</button>
             </div>
             <br />
             <div className="register">
               <p>
-                Already have an account? <Link to="/">Log in</Link>
+                Don't have an account? <Link to="/Signup">Register</Link>
               </p>
             </div>
           </div>
@@ -92,4 +99,4 @@ const Signup = ({ handleSignIn }) => {
   );
 };
 
-export default Signup;
+export default Login;

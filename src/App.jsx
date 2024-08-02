@@ -3,8 +3,6 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import Login from './Login';
 import Signup from './Signup';
 import Forget from './Forget';
-import Info from './Info';
-import Feedback from './assests/Feedback';
 const App = () => {
   const [users, setUsers] = useState([]);
 
@@ -30,8 +28,6 @@ const App = () => {
         <Route path="/" element={<Login handleLogin={handleLogin} />} />
         <Route path="/Signup" element={<Signup handleSignIn={handleSignIn} />} />
         <Route path="/Forget" element={<Forget />} />
-        <Route path="/Info" element={<Info />} />
-        <Route path="/Feedback" element={<Feedback/>} />
       </Routes>
     </BrowserRouter>
   );

@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-import lightningGif from './assests/lighting.webp'; // Corrected asset path
-import logo from './assests/SkySage_logo_light.png'; // Import your logo
+import lightningGif from './assets/lighting.webp'; // Corrected asset path
+import logo from './assets/SkySage_logo_light.png'; // Import your logo
 import './Login.css';
 
 const Forget = () => {
