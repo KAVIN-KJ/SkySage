@@ -27,7 +27,7 @@ export default function Chart(props) {
    
     const [dataList,setDatalist] = useState(props.response.data.list)
     const temps = dataList.map(entry => entry.main.temp); 
-    const labels = dataList.map(entry => entry.dt_txt.split(" ")[0]+"/"+entry.dt_txt.split(" ")[1]); 
+    const labels = dataList.map(entry => entry.dt_txt.split("-")[1]+"-"+entry.dt_txt.split("-")[2]); 
     const humidity = dataList.map(entry=> entry.main.humidity)
     const pressure = dataList.map(entry=> entry.main.pressure)
     useEffect(()=>{
@@ -74,7 +74,7 @@ export default function Chart(props) {
     }
 
     return (
-        <div style={{ width: "60%",overflow:"auto",display:"flex",flexDirection:"column",justifyContent:"space-evenly"}}>
+        <div style={{ width: "40%",overflow:"auto",display:"flex",flexDirection:"column",justifyContent:"space-evenly"}}>
             <Line options={options} data={tempdata} />
             <Line options={options} data={humdata}/>
             <Line options={options} data={pressureData}/>
