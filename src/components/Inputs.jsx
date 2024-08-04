@@ -9,7 +9,7 @@ const Inputs = ({setQuery, setUnits, setResponse}) => {
   const[city,setCity] = useState("");
   const[chartcity,setChartCity] = useState("")
   const handleSearchClick = () => {
-    if (city !== ''){
+    if (city !== ''){ 
       setQuery({q : city})
       setChartCity(city)
     }
@@ -41,7 +41,6 @@ useEffect(()=>{
   return (
     <div>
       <div className="inputs-container">
-        {console.log(chartcity+"Chart City")}
         <div className="inputs-wrapper">
           <input 
             value={city}

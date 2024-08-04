@@ -8,10 +8,8 @@ function News() {
 
     useEffect(() => {
         console.log("Sending Request");
-        axios.get(`https://newsapi.org/v2/everything?q=weather-India&sortBy=publishedAt&apiKey=35c39d22f0744c99bc27e6ba1748a895`)
+        axios.get(`https://newsapi.org/v2/everything?q=weather+India&sortBy=publishedAt&apiKey=35c39d22f0744c99bc27e6ba1748a895`)
             .then((response) => {
-                console.log(response.data.articles);
-                console.log(response);
                 setResponse(response)
             })
 
@@ -20,7 +18,6 @@ function News() {
             })
     }, [])
 
-    console.log(response.data.articles);
     return (
         <>
             <h1 style={{ margin: "20px", textAlign: "center", fontSize: "50px" }} >Feed</h1>
