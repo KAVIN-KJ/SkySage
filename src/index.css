@@ -105,3 +105,76 @@ html {
 .cursor-pointer {
     cursor: pointer;
 }
+
+@media screen and (max-width:1200px) {
+    .weather-overview{
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+        height: fit-content;
+    }
+    .weather-overview-container{
+        padding: 20px;
+        width: 90%;
+    }
+    .date-text{
+        text-align: center;
+    }
+    .inputs-container{
+        width: 100%;
+        flex-direction: column;
+        align-items: center;
+        row-gap: 10px;
+    }
+    .inputs-wrapper{
+        width: 100%;
+        gap: 5px;
+    }
+    .inputs-wrapper .icon{
+        margin: 0px;
+    }
+    .location-text{
+        margin: 0px;
+        font-size: 30px;
+    }
+    .location-container{
+        margin: 0px;
+    }
+    .weather-info{
+        flex-wrap: wrap;
+        height: fit-content;
+    }
+    .vertical-details{
+        gap: 5px;
+        margin-bottom: 10px;
+    }
+    .horizontal-details{
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 20px;
+    }
+    .TempandDetails{
+        flex-direction: column;
+        height: fit-content;
+        justify-content: space-evenly;
+    }
+    .forecast-items{
+        overflow: scroll;
+    }
+    .forecast-items::-webkit-scrollbar{
+        display: none;
+    }
+    .forecast-item{
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        margin: 0px 10px;
+    }
+    .forecast-item .forecast-day{
+        text-align: center;
+    }
+    .skysage-logo{
+        scale: 2;
+    }
+}

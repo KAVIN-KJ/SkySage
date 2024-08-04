@@ -11,14 +11,14 @@ import Chart from './Chart'
 import News from './News'
 import LoadingComponent from './LoadingComponent'
 import Inputs from './components/Inputs'
+import UserCredentials from './UserCredentials'
 
 function TopBar(){
 
     const [text,setText] = useState("Coimbatore")
     const [city,setCity] = useState("")
     const [response,setResponse] = useState(test)
-    const [loading,setLoading] = useState(false)
-
+    const [visible,setVisible] = useState(false)
     const apiKey = '49f83439ae31ba4840afc2609a55c758';
     const units = 'metric';
     const getForecast = `https://api.openweathermap.org/data/2.5/forecast?q=${city}&appid=${apiKey}&units=${units}`
@@ -43,15 +43,22 @@ function TopBar(){
     return(
         <>
                 <div className='container'>
-                    <img src={logo} alt="" />
+                    <div></div>
+                    <img className='skysage-logo' src={logo} alt="" />
                     <div className='options'>
-                        <img alt="" style={{width:"70px"}} src={settings} />
+                        <img className='settings-icon' id={visible ? "visible" : ""} alt="" style={{width:"50px"}} src={settings} onClick={()=>{ setVisible(!visible)}} />
+                        {visible && (<div id="login-background"></div>) }
+                         <div id={visible ? "visible" : ""} className='user-credentials'>
+                            <UserCredentials/>
+                        </div>
                     </div>
                 </div>
                     <div className="content-container">                    
                     <WeatherOverview city={city} />
                     </div>
-                    <News/>
+                    <div>
+                        <News/>
+                    </div>
         </>
     )
 }

@@ -57,3 +57,40 @@
     display: flex;
     justify-content: space-between;
 }
+.user-credentials{
+    position: fixed;
+    top: 0px;
+    visibility: collapse;
+    transition: 500ms ease;
+    scale: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    background-color: transparent;
+    align-items: center;
+    opacity: 0;
+}
+.user-credentials#visible{
+    visibility: visible;
+    scale: 1;
+    opacity: 1;
+}
+.settings-icon{
+    transition: 500ms ease;
+    margin-right: 10px;
+    background-color: white;
+    border-radius: 50%;
+    box-shadow: 0px 0px 20px blue;
+    z-index: 2;
+}
+.settings-icon#visible{
+    transform: rotate(100deg);
+}
+#login-background{
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(138, 138, 138, 0.836);
+    top: 0px;
+}

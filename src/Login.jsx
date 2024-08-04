@@ -1,9 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import lightningGif from './assets/lighting.webp'; 
-import logo from './assets/SkySage_logo_light.png'; // Adjust the path to your logo file
-import './Login.css';
-import './Signup';
+import logo from './assets/SkySage_logo_light.png'; // Import your logo
+import './styles/Login.css';
+
 const Login = ({ handleLogin }) => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -37,7 +36,6 @@ const Login = ({ handleLogin }) => {
     }
 
     if (Object.keys(errors).length === 0) {
-     
       alert(`Login Successful!\nEmail: ${email}\nPassword: ${password}`);
       window.location.href = '/Info';
     } else {
@@ -47,9 +45,6 @@ const Login = ({ handleLogin }) => {
 
   return (
     <section className="login-section">
-      <div className="gif-container">
-        <img src={lightningGif} alt="Weather GIF" />
-      </div>
       <div className="form-container">
         <form onSubmit={handleSubmit} className="form-box">
           <div className="form-value">
@@ -78,13 +73,16 @@ const Login = ({ handleLogin }) => {
               {errors.password && <p className="error-message">{errors.password}</p>}
             </div>
             <div>
-              <label>
-                <input type="checkbox" /> Remember Me <Link to="/Forget">Forgot</Link>
+              <label className="remember-me">
+                <div>
+                <input type="checkbox" /> Remember Me
+                </div>
+                 <Link to="/Forget">Forgot Password ?</Link>
               </label>
             </div>
             <br />
-            <div>
-              <button style={{ padding: '10px', borderRadius: '10px', marginLeft: '10px' }} type="submit">Log in</button>
+            <div style={{display:"flex",justifyContent:"center"}}>
+              <button id='form-button' type="submit">Log in</button>
             </div>
             <br />
             <div className="register">
