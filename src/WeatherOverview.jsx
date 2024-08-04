@@ -29,7 +29,7 @@ const WeatherOverview = () => {
     }, [query, units]);
     
     return (
-        <div style={{padding:"20px", width:"100%",display:"flex",justifyContent:"space-evenly"}}>
+        <div className='weather-overview' >
 
         <div className='weather-overview-container'>
             <TopButtons setResponse={setResponse} setQuery={setQuery}/>
@@ -37,7 +37,7 @@ const WeatherOverview = () => {
             {weather && (
                 <>
                 <TimeAndLocation weather={weather} />
-                <TempandDetails weather={weather} />
+                <TempandDetails unit={units} weather={weather} />
                 <Forecast title='3 hour step forecast ' data={weather.hourly} />
                 <Forecast title='Daily forecast ' data={weather.daily} />
                 </>

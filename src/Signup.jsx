@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-import logo from './assests/SkySage_logo_light.png'; // Replace with your logo path
-import './Login.css';
+import logo from './assets/SkySage_logo_light.png'; // Import your logo
+import './styles/Login.css';
 
 const Signup = ({ handleSignIn }) => {
   const [email, setEmail] = useState('');
@@ -35,6 +35,7 @@ const Signup = ({ handleSignIn }) => {
   return (
     <section className="login-section">
       <div className="gif-container">
+    
     
       </div>
       <div className="form-container">
@@ -76,7 +77,7 @@ const Signup = ({ handleSignIn }) => {
             </div>
             <br />
             <div>
-              <button style={{ padding: '10px', borderRadius: '10px', marginLeft: '10px' }} type="submit">Sign up</button>
+              <button id='form-button' type="submit">Sign up</button>
             </div>
             <br />
             <div className="register">

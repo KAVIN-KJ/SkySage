@@ -1,7 +1,7 @@
 /* Forecast.css */
 
 .forecast-container {
-  padding: 10px;
+  padding: 5px;
 }
 
 .forecast-header {
@@ -17,7 +17,7 @@
 }
 
 .forecast-divider {
-  margin: 12px 0;
+  /* margin: 12px 0; */
 }
 
 .forecast-items {
@@ -40,6 +40,7 @@
 
 .forecast-icon{
   display: inline-block;
+  width: 40px;
   animation: Hover 1s infinite alternate;
 }
 
@@ -54,8 +55,7 @@
 
 
 .forecast-icon {
-  width: 48px;
-  margin: 4px 0;
+  width: 60px;
 }
 
 .forecast-temp {

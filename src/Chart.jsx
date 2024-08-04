@@ -1,3 +1,4 @@
+import './styles/Chart.css'
 import { Line } from 'react-chartjs-2';
 import response from './test.json';
 import axios from 'axios';
@@ -8,10 +9,11 @@ import { Chart as ChartJS,
     LineElement,
     Title,
     Tooltip,
-    Legend
+    Legend,
 } from 'chart.js';
 
 import { useEffect, useState } from 'react';
+import { MdHeight } from 'react-icons/md';
 
 ChartJS.register(
     CategoryScale, 
@@ -34,12 +36,55 @@ export default function Chart(props) {
         setDatalist(props.response.data.list);
     },[props.response])
 
-    const options = {
+    const tempoptions = {
         plugins:{
             title:{
                 display: true,
+                text:"Temperature",
+                color:"Red",
+                font:{
+                    size:20
+                }
+            },
+            legend:{
+                display:false
+            },
+        },
+        responsive:true,
+        
+    };
+
+    const humoptions = {
+        plugins:{
+            title:{
+                display: true,
+                text:"Humidity",
+                color:"Blue",
+                font:{
+                    size:20
+                }
+            },
+            legend:{
+                display:false
             }
-        }
+        },
+        responsive:true,
+    };
+    const pressureoptions = {
+        plugins:{
+            title:{
+                display: true,
+                text:"Pressure",
+                color:"Green",
+                font:{
+                    size:20
+                }
+            },
+            legend:{
+                display:false
+            },
+        },
+        responsive:true,
     };
 
     const tempdata = {
@@ -74,10 +119,10 @@ export default function Chart(props) {
     }
 
     return (
-        <div style={{ width: "40%",overflow:"auto",display:"flex",flexDirection:"column",justifyContent:"space-evenly"}}>
-            <Line options={options} data={tempdata} />
-            <Line options={options} data={humdata}/>
-            <Line options={options} data={pressureData}/>
+        <div className="Chart">
+            <Line options={tempoptions} data={tempdata} />
+            <Line options={humoptions} data={humdata}/>
+            <Line options={pressureoptions} data={pressureData}/>
         </div>
     );
 }

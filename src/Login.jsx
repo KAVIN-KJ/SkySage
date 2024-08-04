@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import logo from './assests/SkySage_logo_light.png'; // Adjust the path to your logo file
-import './Login.css';
+import logo from './assets/SkySage_logo_light.png'; // Import your logo
+import './styles/Login.css';
 
 const Login = ({ handleLogin }) => {
   const [email, setEmail] = useState('');
@@ -74,12 +74,15 @@ const Login = ({ handleLogin }) => {
             </div>
             <div>
               <label className="remember-me">
-                <input type="checkbox" /> Remember Me <Link to="/Forget">Forgot</Link>
+                <div>
+                <input type="checkbox" /> Remember Me
+                </div>
+                 <Link to="/Forget">Forgot Password ?</Link>
               </label>
             </div>
             <br />
-            <div>
-              <button style={{ padding: '10px', borderRadius: '10px', marginLeft: '10px' }} type="submit">Log in</button>
+            <div style={{display:"flex",justifyContent:"center"}}>
+              <button id='form-button' type="submit">Log in</button>
             </div>
             <br />
             <div className="register">

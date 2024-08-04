@@ -3,8 +3,9 @@
 .top-buttons-container {
   display: flex;
   align-items: center;
-  justify-content: space-around;
-  margin: 24px 0; /* my-6 */
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 10px;
 }
 
 .city-button {

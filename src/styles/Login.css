@@ -1,34 +1,31 @@
-body {
-  font-family: 'Arial', sans-serif;
-  margin: 0;
-  color: white;
-  height: 100vh; /* Full viewport height */
-  overflow: hidden; /* Prevent scrolling */
-}
-
 .login-section {
   display: flex;
-  width: 100%;
-  height: 100vh; /* Full viewport height */
+  justify-content: center;
+  width: fit-content;
+  height: fit-content; /* Full viewport height */
   justify-content: center; /* Center the form */
   align-items: center; /* Center the form */
+  animation: fadein 1s ease;
 }
 
 .form-container {
   display: flex;
   justify-content: center;
+  width: fit-content;
+  height: fit-content;
   align-items: center;
-  position: relative; /* Position relative for better control */
+  background-color: white;
+  border-radius: 25px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+
 }
 
 .form-box {
-  padding: 50px;
-  border-radius: 25px;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+  padding: 20px;
   width: 300px;
   height: fit-content;
-  opacity: 100%; /* Fully opaque */
-  background: none; /* No background */
+  opacity: 100%; 
+  background: none;
 }
 
 .form-value {
@@ -38,7 +35,7 @@ body {
 .form-value h2 {
   margin-bottom: 20px;
   margin-top: 0px;
-  font-size: 36px;
+  font-size: 25px;
   color: #007BFF;
 }
 
@@ -48,7 +45,7 @@ body {
 }
 
 .inputbox input {
-  width: 70%;
+  /* width: 70%; */
   padding: 10px;
   border: none;
   border-bottom: 2px solid #333;
@@ -84,23 +81,24 @@ body {
   text-align: left;
 }
 
-button {
+#form-button {
   background: #007BFF;
   color: white;
   border: none;
-  padding: 10px 20px;
   font-size: 16px;
   border-radius: 5px;
   cursor: pointer;
-  transition: background 0.3s;
   width: 100%;
+  margin: 0px;
+  padding: 10px;
+  border-radius: 10px;
 }
 
-button:hover {
+#form-button :hover {
   background: #005bb5;
 }
 
-button:disabled {
+#form-button :disabled {
   background: #ccc;
 }
 
@@ -134,12 +132,28 @@ button:disabled {
 }
 
 .logo {
-  width: 300px; /* Adjust the width as needed */
+  width: 200px; /* Adjust the width as needed */
   height: auto; /* Maintain aspect ratio */
 }
 
 /* Add this to your existing Login.css */
 
 .remember-me {
-  color: black; /* Set the text color to black */
+  color: black;
+  display: flex;
+  flex-direction: column;
+}
+ a{
+  text-decoration: none;
+  color: #005bb5;
+  font-weight: bold;
+}
+
+@keyframes fadein{
+  from{
+    opacity: 0;
+  }
+  to{
+    opacity: 1;
+  }
 }
