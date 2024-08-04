@@ -46,7 +46,8 @@ function TopBar(){
                     <div></div>
                     <img className='skysage-logo' src={logo} alt="" />
                     <div className='options'>
-                        <img className='settings-icon' id={visible ? "visible" : ""} alt="" style={{width:"70px"}} src={settings} onClick={()=>{ setVisible(!visible)}} />
+                        <img className='settings-icon' id={visible ? "visible" : ""} alt="" style={{width:"50px"}} src={settings} onClick={()=>{ setVisible(!visible)}} />
+                        {visible && (<div id="login-background"></div>) }
                          <div id={visible ? "visible" : ""} className='user-credentials'>
                             <UserCredentials/>
                         </div>
