@@ -7,6 +7,19 @@ const TopButtons = ({setQuery,setResponse,cities}) => {
 
 // *********** FOR CHART ************** 
 
+const TopButtons = ({setQuery,setResponse}) => {
+    const [cities, setCities] = useState([]);
+    useEffect(() => {
+        axios.get('http://localhost:5000/api/cities')
+            .then(response => {
+                setCities(response.data);
+            })
+            .catch(error => {
+                console.error('Error fetching city data:', error);
+            });
+    }, []);
+
+
     const [chartcity,setChartCity] = useState("")
   const apiKey = '49f83439ae31ba4840afc2609a55c758';
   const units = 'metric';
