@@ -3,35 +3,16 @@ import '../styles/TopButtons.css'; // Adjust the path based on your folder struc
 import { useEffect } from 'react';
 import axios from 'axios';
 const TopButtons = ({setQuery,setResponse}) => {
-
-
-
-    const cities = [
-        {
-            id: 1,
-            name: 'Coimbatore'
-        },
-        {
-            id: 2,
-            name: 'Chennai'
-        },
-        {
-            id: 3,
-            name: 'Pollachi'
-        },
-        {
-            id: 4,
-            name: 'ooty'
-        },
-        {
-            id: 5,
-            name: 'Theni'
-        },
-    ];
-
-
-
-// *********** FOR CHART ************** 
+    const [cities, setCities] = useState([]);
+    useEffect(() => {
+        axios.get('http://localhost:5000/api/cities')
+            .then(response => {
+                setCities(response.data);
+            })
+            .catch(error => {
+                console.error('Error fetching city data:', error);
+            });
+    }, []);
 
     const [chartcity,setChartCity] = useState("")
   const apiKey = '49f83439ae31ba4840afc2609a55c758';
@@ -51,12 +32,7 @@ useEffect(()=>{
     console.error(error);
   })
   }
-},[chartcity])
-
-
-// *********** FOR CHART ************** 
-
- 
+},[chartcity]) 
     return (
         <div className="top-buttons-container">
             {cities.map((city) => (

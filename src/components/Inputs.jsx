@@ -52,7 +52,7 @@ useEffect(()=>{
           <BiSearch size={30} className="icon"
           onClick={handleSearchClick}
           />
-          <BiCurrentLocation size={30} className="icon"/>
+          {/* <BiCurrentLocation size={30} className="icon"/> */}
         </div>
         <div className="units-wrapper">
           <button className="unit-button"

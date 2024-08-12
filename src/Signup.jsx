@@ -39,9 +39,7 @@ const Signup = ({ handleSignIn }) => {
       </div>
       <div className="form-container">
         <form onSubmit={handleSubmit} className="form-box">
-          <div className="logo-container">
-            <img src={logo} alt="Logo" className="logo" />
-          </div>
+          
           <div className="form-value">
             <h2>Signup</h2>
             <div className="inputbox">
