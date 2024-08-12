@@ -6,8 +6,6 @@ const TopButtons = ({setQuery,setResponse,cities}) => {
 
 
 // *********** FOR CHART ************** 
-
-const TopButtons = ({setQuery,setResponse}) => {
     const [cities, setCities] = useState([]);
     useEffect(() => {
         axios.get('http://localhost:5000/api/cities')
