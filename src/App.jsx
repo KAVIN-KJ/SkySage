@@ -7,9 +7,6 @@ import './App.css'
 // import News from './News'
 import IntroPage from './Intro'
 const App = () => {
-  useEffect(()=>{
-    localStorage.setItem("currentUser","null")
-  },[])
   return (
     <div>
       {console.log(localStorage.getItem("currentUser"))}
