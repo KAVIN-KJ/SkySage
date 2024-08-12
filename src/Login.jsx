@@ -2,6 +2,9 @@ import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
  // Import your logo
 import './styles/Login.css';
+import axios from 'axios';
+import LoadingComponent from './LoadingComponent';
+import { MdLocalGasStation } from 'react-icons/md';
 
 const Login = ({ handleLogin }) => {
   const [email, setEmail] = useState('');
@@ -26,21 +29,30 @@ const Login = ({ handleLogin }) => {
   const handleSubmit = (e) => {
     e.preventDefault();
     const errors = {};
-    
+
     if (!email.trim() || !/\S+@\S+\.\S+/.test(email)) {
       errors.email = 'Email is invalid';
     }
-    
+
     if (!password.trim() || password.trim().length < 6) {
       errors.password = 'Password must be at least 6 characters long';
     }
 
-    if (Object.keys(errors).length === 0) {
-      alert(`Login Successful!\nEmail: ${email}\nPassword: ${password}`);
-      window.location.href = '/Info';
-    } else {
-      setErrors(errors);
-    }
+
+
+    axios.get(`http://localhost:2004/${email}`).then((res) => {
+      if(res.data.length===0){
+        alert("I haven't seen you bloody CUNT !")
+      }
+      else if(password===res.data[0].password){
+        window.location.reload()
+        localStorage.setItem("currentUser",email)
+      }
+      else{
+          alert("Get Lost MF")
+      }
+    })
+
   };
 
   return (
@@ -73,13 +85,13 @@ const Login = ({ handleLogin }) => {
             <div>
               <label className="remember-me">
                 <div>
-                <input type="checkbox" /> Remember Me
+                  <input type="checkbox" /> Remember Me
                 </div>
-                 <Link to="/Forget">Forgot Password ?</Link>
+                <Link to="/Forget">Forgot Password ?</Link>
               </label>
             </div>
             <br />
-            <div style={{display:"flex",justifyContent:"center"}}>
+            <div style={{ display: "flex", justifyContent: "center" }}>
               <button id='form-button' type="submit">Log in</button>
             </div>
             <br />

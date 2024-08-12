@@ -6,20 +6,31 @@ import TimeAndLocation from './components/TimeAndLocation';
 import TopButtons from './components/TopButtons';
 import { getWeatherData } from './services/weatherservice';
 import getFormattedWeatherData from './services/weatherservice';
-import './styles/WeatherOverview.css'; 
+import './styles/WeatherOverview.css';
 import test from './test.json'
 import Chart from './Chart';
+import axios from 'axios';
 
 const WeatherOverview = () => {
 
-    const[query, setQuery] = useState({q:'madurai'})
-    const[units, setUnits] = useState('metric')
-    const[weather, setWeather] = useState(null)
-    const[response,setResponse] = useState(test)
+    const [query, setQuery] = useState({ q: 'madurai' })
+    const [units, setUnits] = useState('metric')
+    const [weather, setWeather] = useState(null)
+    const [response, setResponse] = useState(test)
+    const [cities, setCities] = useState([])
 
 
-    const getWeather = async() => {
-        await getFormattedWeatherData({...query, units}).then((data) =>{
+    useEffect(() => {
+        axios.get(`http://localhost:2004/${localStorage.getItem("currentUser")}`)
+            .then((response) => {
+                console.log(response)
+                setCities(response.data[0].cities)
+            })
+    }, [response])
+
+
+    const getWeather = async () => {
+        await getFormattedWeatherData({ ...query, units }).then((data) => {
             setWeather(data);
             console.log(data);
         });
@@ -27,23 +38,23 @@ const WeatherOverview = () => {
     useEffect(() => {
         getWeather();
     }, [query, units]);
-    
+
     return (
         <div className='weather-overview' >
 
-        <div className='weather-overview-container'>
-            <TopButtons setResponse={setResponse} setQuery={setQuery}/>
-            <Inputs setResponse={setResponse} setQuery={setQuery} setUnits={setUnits}/>
-            {weather && (
-                <>
-                <TimeAndLocation weather={weather} />
-                <TempandDetails unit={units} weather={weather} />
-                <Forecast title='3 hour step forecast ' data={weather.hourly} />
-                <Forecast title='Daily forecast ' data={weather.daily} />
-                </>
-            )}
-        </div>
-            <Chart response={response}/>
+            <div className='weather-overview-container'>
+                <TopButtons cities={cities} setResponse={setResponse} setQuery={setQuery} />
+                <Inputs setResponse={setResponse} setQuery={setQuery} setUnits={setUnits} />
+                {weather && (
+                    <>
+                        <TimeAndLocation weather={weather} />
+                        <TempandDetails unit={units} weather={weather} />
+                        <Forecast title='3 hour step forecast ' data={weather.hourly} />
+                        <Forecast title='Daily forecast ' data={weather.daily} />
+                    </>
+                )}
+            </div>
+            <Chart response={response} />
         </div>
     );
 }

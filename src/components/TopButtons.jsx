@@ -2,6 +2,11 @@ import React, { useState } from 'react';
 import '../styles/TopButtons.css'; // Adjust the path based on your folder structure
 import { useEffect } from 'react';
 import axios from 'axios';
+const TopButtons = ({setQuery,setResponse,cities}) => {
+
+
+// *********** FOR CHART ************** 
+
 const TopButtons = ({setQuery,setResponse}) => {
     const [cities, setCities] = useState([]);
     useEffect(() => {
@@ -13,6 +18,7 @@ const TopButtons = ({setQuery,setResponse}) => {
                 console.error('Error fetching city data:', error);
             });
     }, []);
+
 
     const [chartcity,setChartCity] = useState("")
   const apiKey = '49f83439ae31ba4840afc2609a55c758';
@@ -35,13 +41,13 @@ useEffect(()=>{
 },[chartcity]) 
     return (
         <div className="top-buttons-container">
-            {cities.map((city) => (
+            {cities.map((city,key) => (
                 <button 
-                    key={city.id} 
+                    key={key} 
                     className="city-button"
-                    onClick={() => {setQuery({ q: city.name });setChartCity(city.name) }}
+                    onClick={() => {setQuery({ q: city });setChartCity(city) }}
                 >
-                    {city.name}
+                    {city}
                 </button>
             ))}
         </div>
