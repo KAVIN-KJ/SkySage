@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import logo from './assets/SkySage_logo_light.png'; // Import your logo
+ // Import your logo
 import './styles/Login.css';
 
 const Login = ({ handleLogin }) => {
@@ -48,9 +48,7 @@ const Login = ({ handleLogin }) => {
       <div className="form-container">
         <form onSubmit={handleSubmit} className="form-box">
           <div className="form-value">
-            <div className="logo-container">
-              <img src={logo} alt="Logo" className="logo" />
-            </div>
+           
             <h2>Login</h2>
             <div className="inputbox">
               <input

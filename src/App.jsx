@@ -1,17 +1,18 @@
 import React from 'react'
-import TopBar from './TopBar'
+// import TopBar from './TopBar'
 import './App.css'
 
-import WeatherOverview from './WeatherOverview'
-import Chart from './Chart'
-import News from './News'
+// import WeatherOverview from './WeatherOverview'
+// import Chart from './Chart'
+// import News from './News'
+import IntroPage from './Intro'
 const App = () => {
   
   return (
     <div>
-      <TopBar/>
+      <IntroPage/>
     </div>
 
-  )
-}
+  );
+};
 export default App
