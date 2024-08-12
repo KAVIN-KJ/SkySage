@@ -21,8 +21,8 @@ const WeatherOverview = () => {
     const getWeather = async() => {
         await getFormattedWeatherData({...query, units}).then((data) =>{
             setWeather(data);
+            console.log(data);
         });
-        console.log(data);
     };
     useEffect(() => {
         getWeather();
