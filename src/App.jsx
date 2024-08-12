@@ -10,7 +10,7 @@ const App = () => {
   return (
     <div>
       {console.log(localStorage.getItem("currentUser"))}
-      { localStorage.getItem("currentUser")!=="null" ? <TopBar/> : <IntroPage/>}
+      { (localStorage.getItem("currentUser")!=="null" && localStorage.getItem("currentUser")!==null) ? <TopBar/> : <IntroPage/>}
     </div>
 
   );
