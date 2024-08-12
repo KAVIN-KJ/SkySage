@@ -73,7 +73,6 @@ const Inputs = ({ setQuery, setUnits, setResponse }) => {
           <BiSearch size={30} className="icon"
             onClick={handleSearchClick}
           />
-          <BiCurrentLocation size={30} className="icon" />
         </div>
         <div className="units-wrapper">
           <button className="unit-button"

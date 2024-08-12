@@ -1,5 +1,5 @@
 import React from 'react'
-// import TopBar from './TopBar'
+import TopBar from './TopBar'
 import './App.css'
 
 // import WeatherOverview from './WeatherOverview'
@@ -10,7 +10,7 @@ const App = () => {
   
   return (
     <div>
-      <IntroPage/>
+      { localStorage.getItem("currentUser")!=="null" ? <TopBar/> : <IntroPage/>}
     </div>
 
   );

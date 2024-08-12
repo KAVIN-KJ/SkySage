@@ -1,15 +1,17 @@
-.container{
-    position: sticky;
-    top: 0px;
-    display: flex;
-    background-color: rgba(255, 255, 255, 0.884);
-    justify-content: space-between;
-    align-items: center;
-    width: 100%;
-    z-index: 1;
+.topbar-container{
+   height: fit-content;
+   display: flex;
+   justify-content: space-between;
+   align-items: center;
 }
-.container img{
+.topbar-container img{
     width: 10vw;
+}
+.topbar-container .logout-button{
+    width: 50px;
+}
+.topbar-user-details{
+    font-size: 15px;
 }
 .search{
     max-width: 400px;
@@ -22,7 +24,7 @@
     border: 1px solid rgb(0, 183, 255);
     transition: 400ms ease-out;
 }
-.container:hover .search{
+.topbar-container:hover .search{
     outline: none;
     width: 100%;
     border-radius: 50px;

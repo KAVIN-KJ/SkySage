@@ -1,17 +1,10 @@
 import './styles/TopBar.css'
-import search_light from './assets/search-icon-light.svg'
 import logo from './assets/SkySage_logo_light.png'
-import settings from './assets/settings.svg'
 import test from './test.json'
-import axios from 'axios'
+import logout from './assets/power-off-svgrepo-com.svg'
 import WeatherOverview from './WeatherOverview'
 import { useState, useEffect } from 'react'
-import { BiCurrentLocation } from 'react-icons/bi'
-import Chart from './Chart'
 import News from './News'
-import LoadingComponent from './LoadingComponent'
-import Inputs from './components/Inputs'
-import UserCredentials from './UserCredentials'
 
 function TopBar(){
 
@@ -23,36 +16,20 @@ function TopBar(){
     const units = 'metric';
     const getForecast = `https://api.openweathermap.org/data/2.5/forecast?q=${city}&appid=${apiKey}&units=${units}`
 
-    // useEffect(()=>{
-    //     if(city){
-    //         setLoading(true);
-    //         console.log("Request Sent");
-    //     axios.get(getForecast)
-    //     .then((recieve)=>{
-    //         setResponse(recieve);
-    //         setLoading(false);
-    //     })
-    //     .catch((error)=>{
-    //         console.log(error);
-    //     })
-    // }
-    // },[city])
-
-
-
+    const handleLogout = ()=>{
+        localStorage.setItem("currentUser","null");
+        window.location.reload()
+    }
+    
     return(
         <>
-                <div className='container'>
-                    <div></div>
-                    <img className='skysage-logo' src={logo} alt="" />
-                    <div className='options'>
-                        <img className='settings-icon' id={visible ? "visible" : ""} alt="" style={{width:"50px"}} src={settings} onClick={()=>{ setVisible(!visible)}} />
-                        {visible && (<div id="login-background"></div>) }
-                         <div id={visible ? "visible" : ""} className='user-credentials'>
-                            <UserCredentials/>
+                    <div className='topbar-container'>
+                        <img className='skysage-logo' src={logo} alt="" />
+                        <div style={{display:"flex",justifyContent:"center",alignItems:"center"}}>
+                            <span className='topbar-user-details'>Currently logged in as <b>{localStorage.getItem("currentUser").split("@")[0]}</b></span>
+                            <img onClick={handleLogout} className='logout-button' src={logout} alt="" />
                         </div>
                     </div>
-                </div>
                     <div className="content-container">                    
                     <WeatherOverview city={city} />
                     </div>
