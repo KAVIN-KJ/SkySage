@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import logo from './assets/SkySage_logo_light.png'; // Import your logo
 import './styles/Login.css';
-
+import axios from 'axios';
 const Signup = ({ handleSignIn }) => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -30,6 +30,16 @@ const Signup = ({ handleSignIn }) => {
     } else {
       setErrors(errors);
     }
+
+    axios.post('http://localhost:2004/adduser',{
+      userName:email,
+      password:password
+    })
+    .then((res)=>{
+      console.log(res.data)
+    })
+
+
   };
 
   return (
