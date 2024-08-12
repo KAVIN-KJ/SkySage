@@ -1,4 +1,4 @@
-.container {
+.intro-container {
     display: flex;
     height: 100vh;
     font-family: Arial, sans-serif;
@@ -22,8 +22,8 @@
   }
   
   .left {
-    background-color:darkgrey;
-    color: white;
+    background-color:rgb(172, 172, 238);
+    color: black;
     text-align: center;
   }
   

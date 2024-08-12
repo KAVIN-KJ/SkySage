@@ -11,6 +11,12 @@
     font-family: "Josefin Sans";
 }
 
+
+input:focus{
+    outline: none;
+}
+
+
  body{
     margin: 0px;
     font-family: 'Poppins';
@@ -178,5 +184,15 @@
     }
     .skysage-logo{
         scale: 2;
+    }
+    .intro-container{
+        flex-direction: column;
+        align-items: center;
+        width: 100%;
+    }
+    .intro-container .left{
+        width: 100%;
+        padding: 20px;
+        box-sizing: border-box;
     }
 }

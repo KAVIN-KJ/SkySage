@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import './styles/intro.css';
 import logo from './assets/SkySage_logo_light.png';
@@ -6,8 +6,12 @@ import Signup from './Signup';
 import UserCredentials from './UserCredentials';
 
 const IntroPage = () => {
+
+
+
+
   return (
-    <div className="container">
+    <div className="intro-container">
       <div className="left">
       <div >
               <img src={logo} alt="Logo" className="logo" />
