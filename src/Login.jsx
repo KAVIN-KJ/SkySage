@@ -11,12 +11,12 @@ const Login = ({ handleLogin }) => {
   const [password, setPassword] = useState('');
   const [errors, setErrors] = useState({});
 
-  useEffect(() => {
-    const storedEmail = localStorage.getItem('userEmail') || '';
-    const storedPassword = localStorage.getItem('userPassword') || '';
-    setEmail(storedEmail);
-    setPassword(storedPassword);
-  }, []);
+  // useEffect(() => {
+  //   const storedEmail = localStorage.getItem('userEmail') || '';
+  //   const storedPassword = localStorage.getItem('userPassword') || '';
+  //   setEmail(storedEmail);
+  //   setPassword(storedPassword);
+  // }, []);
 
   useEffect(() => {
     localStorage.setItem('userEmail', email);
