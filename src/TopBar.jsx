@@ -26,7 +26,7 @@ function TopBar(){
                     <div className='topbar-container'>
                         <img className='skysage-logo' src={logo} alt="" />
                         <div style={{display:"flex",justifyContent:"center",alignItems:"center"}}>
-                            <span className='topbar-user-details'>Currently logged in as <b>{localStorage.getItem("currentUser").split("@")[0]}</b></span>
+                            <span className='topbar-user-details'>Currently logged in as <b>{localStorage.getItem("currentUser")}</b></span>
                             <img onClick={handleLogout} className='logout-button' src={logout} alt="" />
                         </div>
                     </div>
