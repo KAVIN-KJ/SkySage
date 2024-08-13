@@ -18,7 +18,7 @@ const WeatherOverview = () => {
     const [weather, setWeather] = useState(null)
     const [response, setResponse] = useState(test)
     const [cities, setCities] = useState([])
-
+    const [trigger, setTrigger] = useState(false)
 
     useEffect(() => {
         axios.get(`http://localhost:2004/${localStorage.getItem("currentUser")}`)
@@ -26,7 +26,7 @@ const WeatherOverview = () => {
                 console.log(response)
                 setCities(response.data[0].cities)
             })
-    }, [response])
+    }, [trigger, response])
 
 
     const getWeather = async () => {
@@ -37,14 +37,23 @@ const WeatherOverview = () => {
     };
     useEffect(() => {
         getWeather();
-    }, [query, units]);
+    }, [query, units]); 
 
     return (
         <div className='weather-overview' >
 
             <div className='weather-overview-container'>
-                <TopButtons cities={cities} setResponse={setResponse} setQuery={setQuery} />
-                <Inputs setResponse={setResponse} setQuery={setQuery} setUnits={setUnits} />
+                <TopButtons
+                    cities={cities}
+                    setResponse={setResponse}
+                    setQuery={setQuery}
+                    trigger={trigger}
+                    setTrigger={setTrigger} />
+                <Inputs setResponse={setResponse}
+                    setQuery={setQuery}
+                    setUnits={setUnits}
+                    trigger={trigger}
+                    setTrigger={setTrigger} />
                 {weather && (
                     <>
                         <TimeAndLocation weather={weather} />

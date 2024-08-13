@@ -5,13 +5,14 @@ import test from '../test.json'
 import '../styles/Inputs.css'; // Adjust the path based on your folder structure
 import Chart from '../Chart';
 
-const Inputs = ({ setQuery, setUnits, setResponse }) => {
+const Inputs = ({ setQuery, setUnits, setResponse, trigger, setTrigger }) => {
   const [city, setCity] = useState("");
   const [chartcity, setChartCity] = useState("")
   const handleSearchClick = () => {
     if (city !== '') {
       setQuery({ q: city })
       setChartCity(city)
+      setTrigger(!trigger)
     }
   }
 
