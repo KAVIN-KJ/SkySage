@@ -2,19 +2,21 @@ import React, { useState } from 'react';
 import '../styles/TopButtons.css'; // Adjust the path based on your folder structure
 import { useEffect } from 'react';
 import axios from 'axios';
-const TopButtons = ({setQuery,setResponse,cities}) => {
+const TopButtons = ({setQuery,setResponse,cities,trigger,setTrigger}) => {
 
 
 // *********** FOR CHART ************** 
-    useEffect(() => {
-        axios.get('http://localhost:5000/api/cities')
-            .then(response => {
-                setCities(response.data);
-            })
-            .catch(error => {
-                console.error('Error fetching city data:', error);
-            });
-    }, []);
+
+
+    const handleDelete = (city)=>{
+        axios.post('http://localhost:2004/deletecity',{
+          userName:localStorage.getItem("currentUser"),
+          city:city
+        }).then((res)=>{
+          console.log(res.data)
+          setTrigger(!trigger)
+        })
+    }
 
 
     const [chartcity,setChartCity] = useState("")
@@ -35,17 +37,21 @@ useEffect(()=>{
     console.error(error);
   })
   }
-},[chartcity]) 
+},[cities]) 
     return (
         <div className="top-buttons-container">
             {cities.map((city,key) => (
+              <div key={key} className='top-buttons' >
                 <button 
-                    key={key} 
                     className="city-button"
-                    onClick={() => {setQuery({ q: city });setChartCity(city) }}
-                >
+                    onClick={() => {setQuery({ q: city });setChartCity(city);}}
+                    >
                     {city}
                 </button>
+                    <button onClick={()=> handleDelete(city)} className='closebutton'>
+                      X
+                    </button>
+              </div>
             ))}
         </div>
     );

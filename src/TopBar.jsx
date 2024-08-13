@@ -25,13 +25,12 @@ function TopBar(){
         <>
                     <div className='topbar-container'>
                         <img className='skysage-logo' src={logo} alt="" />
-                        <div style={{display:"flex",justifyContent:"center",alignItems:"center"}}>
-                            {console.log("Local user " +localStorage.getItem("currentUser"))}
+                        <div style={{display:"flex",justifyContent:"right",alignItems:"center"}}>
                             <span className='topbar-user-details'>Currently logged in as <b>{localStorage.getItem("currentUser")}</b></span>
                             <img onClick={handleLogout} className='logout-button' src={logout} alt="" />
                         </div>
                     </div>
-                    <div className="content-container">                    
+                    <div className="content-container">
                     <WeatherOverview city={city} />
                     </div>
                     <div>

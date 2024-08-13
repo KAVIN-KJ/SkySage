@@ -195,4 +195,18 @@ input:focus{
         padding: 20px;
         box-sizing: border-box;
     }
+    .topbar-user-details{
+        font-size: 2vw;
+        text-align: center;
+    }
+    .topbar-container{
+        box-sizing: border-box;
+    }
+    .topbar-container .skysage-logo{
+        width: 20vw;
+    }
+    .logout-button{
+        width: 30px;
+    }
+
 }
