@@ -21,7 +21,7 @@ const WeatherOverview = () => {
     const [trigger, setTrigger] = useState(false)
 
     useEffect(() => {
-        axios.get(`http://localhost:2004/${localStorage.getItem("currentUser")}`)
+        axios.get(`https://skysageserver.onrender.com/${localStorage.getItem("currentUser")}`)
             .then((response) => {
                 console.log(response)
                 setCities(response.data[0].cities)

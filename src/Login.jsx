@@ -40,16 +40,16 @@ const Login = ({ handleLogin }) => {
 
 
 
-    axios.get(`http://localhost:2004/${email}`).then((res) => {
+    axios.get(`https://skysageserver.onrender.com/${email}`).then((res) => {
       if(res.data.length===0){
-        alert("I haven't seen you bloody CUNT !")
+        alert("User Not Found !")
       }
       else if(password===res.data[0].password){
         window.location.reload()
         localStorage.setItem("currentUser",email)
       }
       else{
-          alert("Get Lost MF")
+          alert("Wrong Password")
       }
     })
 

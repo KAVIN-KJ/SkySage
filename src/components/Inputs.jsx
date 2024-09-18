@@ -23,7 +23,7 @@ const Inputs = ({ setQuery, setUnits, setResponse, trigger, setTrigger }) => {
 
   useEffect(() => {
     if (chartcity) {
-      axios.put('http://localhost:2004/updatecities', {
+      axios.put('https://skysageserver.onrender.com/updatecities', {
         username: localStorage.getItem("currentUser"),
         city: chartcity
       })
