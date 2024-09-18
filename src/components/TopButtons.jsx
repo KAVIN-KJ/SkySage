@@ -9,7 +9,7 @@ const TopButtons = ({setQuery,setResponse,cities,trigger,setTrigger}) => {
 
 
     const handleDelete = (city)=>{
-        axios.post('http://localhost:2004/deletecity',{
+        axios.post('https://skysageserver.onrender.com/deletecity',{
           userName:localStorage.getItem("currentUser"),
           city:city
         }).then((res)=>{

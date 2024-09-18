@@ -7,7 +7,7 @@ const userModel = require('./Models/User')
 app.use(express.json())
 app.use(cors())
 const url = `mongodb+srv://KJKR:kavin2004@cluster0.hznuc.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0`
-
+const PORT =    process.env.PORT || 2004;
 mongoose.connect(url)
 
 app.get('/:username', async (req,res)=>{
@@ -79,8 +79,8 @@ app.put('/updatecities', async(req,res)=>{
     }
 })
 
-app.listen(2004,()=>{
-    console.log("server running at http://localhost:2004")
+app.listen(PORT,()=>{
+    console.log(`server running at port ${PORT}`)
 })
 
 

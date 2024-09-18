@@ -31,7 +31,7 @@ const Signup = ({ handleSignIn }) => {
       setErrors(errors);
     }
 
-    axios.post('http://localhost:2004/adduser',{
+    axios.post('https://skysageserver.onrender.com/adduser',{
       userName:email,
       password:password
     })
