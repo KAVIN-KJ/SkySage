@@ -26,7 +26,7 @@ const WeatherOverview = () => {
                 console.log(response)
                 setCities(response.data[0].cities)
             })
-    }, [trigger, response])
+    }, [response])
 
 
     const getWeather = async () => {
