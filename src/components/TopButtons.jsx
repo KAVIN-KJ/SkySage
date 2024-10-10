@@ -14,13 +14,13 @@ const TopButtons = ({setQuery,setResponse,cities,trigger,setTrigger}) => {
           city:city
         }).then((res)=>{
           console.log(res.data)
-          setTrigger(!trigger)
-          
+          setTrigger(!trigger)          
         })
     }
 
 
   const [chartcity,setChartCity] = useState("")
+
   const apiKey = '49f83439ae31ba4840afc2609a55c758';
   const units = 'metric';
   const getForecast = `https://api.openweathermap.org/data/2.5/forecast?q=${chartcity}&appid=${apiKey}&units=${units}`
@@ -38,7 +38,7 @@ useEffect(()=>{
     console.error(error);
   })
   }
-},[chartcity]) 
+},[cities]) 
     return (
         <div className="top-buttons-container">
             {cities.map((city,key) => (
