@@ -38,7 +38,7 @@ useEffect(()=>{
     console.error(error);
   })
   }
-},[cities,chartcity]) 
+},[chartcity]) 
     return (
         <div className="top-buttons-container">
             {cities.map((city,key) => (
